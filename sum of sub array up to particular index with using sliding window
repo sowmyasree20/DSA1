@@ -1,0 +1,22 @@
+package subarray;
+
+public class SubArray {
+	public static void main(String args[]) {
+		int arr[]= {2,3,4,5,6};
+		int n=arr.length;
+		int ans=0;
+		int sum=0;
+		int l=0;
+		for(int r=0;r<n;r++) {
+			sum+=arr[r];
+			if(r-l==3) {
+				sum-=arr[l];
+				l++;
+			}
+		if(r-l==2) {
+			ans=Math.max(ans, sum);
+		}	
+		}
+		System.out.println(ans);
+		}
+}
