@@ -1,0 +1,41 @@
+import java.util.*;
+class Solution {
+   public static ArrayList<ArrayList<Integer>> getPairs(int arr[]){
+       ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+       Arrays.sort(arr);
+       int l=0;
+       int r=arr.length-1;
+       while(l<r){
+           int sum=arr[l]+arr[r];
+           if(sum==0){
+               ans.add(new ArrayList<>(Arrays.asList(arr[l],arr[r])));
+           
+           int x=arr[l];
+           int y=arr[r];
+           while(l<r && arr[l]==x){
+               l++;
+           }
+           while(l<r && arr[r]==y){
+               r--;
+           }
+       }else if(sum<0){
+           l++;
+       }else{
+           r--;
+       }
+      }
+ return ans;
+}
+public static void main(String[] args){
+   Scanner s=new Scanner(System.in);
+   String str=s.nextLine();
+   str=str.substring(1,str.length()-1);
+   String v[]=str.split(",");
+   int n=v.length;
+   int arr[]=new int[n];
+   for(int i=0;i<n;i++){
+       arr[i]=Integer.parseInt(v[i].trim());
+   }
+   System.out.println(getPairs(arr));
+}
+}
